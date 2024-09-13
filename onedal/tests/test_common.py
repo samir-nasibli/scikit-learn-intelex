@@ -39,3 +39,8 @@ def test_sklearn_check_version_ban():
     # remove this file from the list
     output = "\n".join([i for i in output if "test_common.py" not in i])
     assert output == "", f"sklearn versioning is occuring in: \n{output}"
+
+
+def test_dpctl_import():
+    import dpctl
+    import dpctl.tensor as dpt
