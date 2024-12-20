@@ -134,7 +134,7 @@ class IncrementalPCA(BasePCA):
             Returns the instance itself.
         """
 
-        use_raw_input = _get_config().get("use_raw_input", False)
+        use_raw_input = _get_config()["use_raw_input"]
         sua_iface, xp, _ = _get_sycl_namespace(X)
         # Saving input array namespace and sua_iface, that will be used in
         # finalize_fit.
@@ -148,7 +148,6 @@ class IncrementalPCA(BasePCA):
             X = _check_array(X, dtype=[np.float64, np.float32], ensure_2d=True)
 
         n_samples, n_features = X.shape
-
         first_pass = not hasattr(self, "components_")
         if first_pass:
             self.components_ = None
